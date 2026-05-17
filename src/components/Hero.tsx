@@ -44,7 +44,7 @@ export default function Hero() {
       className="relative min-h-[100svh] w-full overflow-hidden bg-bark-900"
     >
       {/* Ken-Burns background slideshow */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 z-0">
         {slides.map((s, i) => (
           <div
             key={s.src}
@@ -86,7 +86,7 @@ export default function Hero() {
       {/* Top gold accent line */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-ochre-500/70 to-transparent z-10" />
 
-      <div className="container-px relative pt-36 pb-20 md:pt-40 md:pb-28 min-h-[100svh] flex flex-col justify-center">
+      <div className="container-px relative z-10 pt-36 pb-20 md:pt-40 md:pb-28 min-h-[100svh] flex flex-col justify-center">
         <div className="max-w-4xl">
           {/* Eyebrow with location chip */}
           <div className="inline-flex items-center gap-3 mb-7 animate-fade-up">
