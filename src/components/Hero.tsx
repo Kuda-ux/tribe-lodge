@@ -1,48 +1,148 @@
-import { Phone, MessageCircle, ArrowRight, MapPin } from "lucide-react";
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Phone, MessageCircle, ArrowRight, MapPin, Play, X, Star } from "lucide-react";
 import { site } from "@/lib/site";
 
 const reservations = site.phones.find((p) => p.role.startsWith("Reservations"))!;
 
+// 3 hero stills — one for each suite style
+const slides = [
+  {
+    src: "/images/img-05.jpg",
+    alt: "Tribal Suite with hand-woven Tonga basket wall art",
+    caption: "Tribal Suite",
+  },
+  {
+    src: "/images/img-08.jpg",
+    alt: "Onyx Presidential Suite with chandelier and black velvet headboard",
+    caption: "Onyx Presidential Suite",
+  },
+  {
+    src: "/images/img-02.jpg",
+    alt: "Navy Velvet Suite with crystal chandelier",
+    caption: "Navy Velvet Suite",
+  },
+];
+
 export default function Hero() {
+  const [active, setActive] = useState(0);
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  useEffect(() => {
+    const id = setInterval(
+      () => setActive((i) => (i + 1) % slides.length),
+      6500
+    );
+    return () => clearInterval(id);
+  }, []);
+
   return (
-    <section id="top" className="relative min-h-[100svh] w-full overflow-hidden">
-      {/* Background video with image fallback (poster = tribal suite) */}
+    <section
+      id="top"
+      className="relative min-h-[100svh] w-full overflow-hidden bg-bark-900"
+    >
+      {/* Ken-Burns background slideshow */}
       <div className="absolute inset-0 -z-10">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/images/img-05.jpg"
-          className="h-full w-full object-cover"
-        >
-          <source src="/videos/video-1.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-hero-overlay" />
+        {slides.map((s, i) => (
+          <div
+            key={s.src}
+            className={`absolute inset-0 transition-opacity duration-[1600ms] ease-in-out ${
+              i === active ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <div
+              className={`absolute inset-0 ${
+                i === active ? "animate-kenburns" : ""
+              }`}
+            >
+              <Image
+                src={s.src}
+                alt={s.alt}
+                fill
+                priority={i === 0}
+                fetchPriority={i === 0 ? "high" : "low"}
+                className="object-cover"
+                sizes="100vw"
+                quality={85}
+              />
+            </div>
+          </div>
+        ))}
+        {/* Layered gradients for premium depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-bark-900/85 via-bark-900/55 to-bark-900/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-bark-900/70 via-transparent to-bark-900/30" />
+        {/* Subtle film-grain noise */}
+        <div
+          className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          }}
+        />
       </div>
 
-      <div className="container-px relative pt-36 pb-20 md:pt-44 md:pb-32 min-h-[100svh] flex flex-col justify-center">
-        <div className="max-w-3xl animate-fade-up">
-          <div className="inline-flex items-center gap-3 mb-6 text-sand-200/90">
-            <span className="h-px w-10 bg-sand-200/70" />
-            <MapPin className="h-3.5 w-3.5" />
-            <span className="text-[11px] uppercase tracking-[0.32em] font-semibold text-sand-100">
-              Hillside • Bulawayo • Zimbabwe
+      {/* Top gold accent line */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-ochre-500/70 to-transparent z-10" />
+
+      <div className="container-px relative pt-36 pb-20 md:pt-40 md:pb-28 min-h-[100svh] flex flex-col justify-center">
+        <div className="max-w-4xl">
+          {/* Eyebrow with location chip */}
+          <div className="inline-flex items-center gap-3 mb-7 animate-fade-up">
+            <span className="h-px w-12 bg-ochre-500/80" />
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand-50/[0.08] border border-sand-50/15 backdrop-blur-md text-sand-100">
+              <MapPin className="h-3 w-3 text-ochre-500" />
+              <span className="text-[10px] uppercase tracking-[0.32em] font-semibold">
+                Hillside · Bulawayo · Zimbabwe
+              </span>
             </span>
           </div>
 
-          <h1 className="h-display text-sand-50 text-5xl sm:text-6xl md:text-7xl lg:text-[88px]">
+          {/* Animated wordmark above headline */}
+          <div
+            className="text-ochre-500 text-xs sm:text-sm tracking-[0.5em] uppercase font-semibold mb-5 animate-fade-up"
+            style={{ animationDelay: "120ms" }}
+          >
+            ✦ The Tribe Lodge ✦
+          </div>
+
+          <h1
+            className="h-display text-sand-50 text-5xl sm:text-6xl md:text-7xl lg:text-[92px] leading-[0.95] animate-fade-up"
+            style={{ animationDelay: "240ms" }}
+          >
             Stay With Us,
             <br />
-            <span className="italic text-sand-200">Create Memories.</span>
+            <span className="italic text-sand-200 relative inline-block">
+              Create Memories.
+              <svg
+                viewBox="0 0 300 12"
+                className="absolute -bottom-3 left-0 w-[80%] h-2 text-ochre-500"
+                aria-hidden
+              >
+                <path
+                  d="M2 8 Q 80 -2 150 6 T 298 6"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
           </h1>
 
-          <p className="mt-7 text-sand-100/90 text-lg md:text-xl max-w-2xl leading-relaxed">
-            Authentic African hospitality at the heart of Bulawayo — comfort, style and
-            personalized service for business and leisure travellers. Stay in style, feel at home.
+          <p
+            className="mt-9 text-sand-100/90 text-lg md:text-xl max-w-2xl leading-relaxed animate-fade-up"
+            style={{ animationDelay: "360ms" }}
+          >
+            Authentic African hospitality at the heart of Bulawayo — three signature suites,
+            curated tours and warm service for travellers who appreciate the finer details.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div
+            className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4 animate-fade-up"
+            style={{ animationDelay: "480ms" }}
+          >
             <a href="#rooms" className="btn-primary">
               Book Your Stay <ArrowRight className="h-4 w-4" />
             </a>
@@ -56,35 +156,94 @@ export default function Hero() {
             >
               <MessageCircle className="h-4 w-4" /> WhatsApp Us
             </a>
-            <a
-              href={`tel:${reservations.tel}`}
-              className="hidden sm:inline-flex btn-outline"
+            <button
+              onClick={() => setVideoOpen(true)}
+              className="inline-flex items-center gap-3 text-sand-50 hover:text-ochre-500 transition-colors group"
             >
-              <Phone className="h-4 w-4" /> Call Reservations
-            </a>
+              <span className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-sand-50/30 bg-sand-50/[0.05] backdrop-blur-md group-hover:bg-ochre-500 group-hover:border-ochre-500 group-hover:text-bark-900 transition-all">
+                <Play className="h-4 w-4 ml-0.5" />
+                <span className="absolute inset-0 rounded-full animate-ping bg-sand-50/20 group-hover:bg-ochre-500/20" />
+              </span>
+              <span className="text-[11px] uppercase tracking-[0.3em] font-semibold">
+                Watch Our Story
+              </span>
+            </button>
+          </div>
+
+          {/* Trust strip */}
+          <div
+            className="mt-12 flex items-center gap-5 text-sand-200/80 text-xs sm:text-sm animate-fade-up"
+            style={{ animationDelay: "600ms" }}
+          >
+            <div className="flex items-center gap-1.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-3.5 w-3.5 fill-ochre-500 text-ochre-500" />
+              ))}
+            </div>
+            <span className="hidden sm:inline text-sand-200/40">|</span>
+            <span className="hidden sm:inline">Premium presidential suites from $60/night</span>
+            <span className="sm:hidden">From $60 / night</span>
           </div>
         </div>
 
-        {/* Floating stats / trust card */}
-        <div className="mt-16 md:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-px bg-sand-50/10 backdrop-blur-md rounded-2xl overflow-hidden border border-sand-50/15 max-w-4xl">
-          {[
-            { k: "From $60", v: "Per Night" },
-            { k: "3 Suites", v: "Tribal • Navy • Onyx" },
-            { k: "Pool & Wi-Fi", v: "Free Parking" },
-            { k: "Airport", v: "Transfers & Tours" },
-          ].map((s) => (
-            <div key={s.v} className="bg-bark-900/35 px-5 py-6 text-center">
-              <div className="text-sand-50 font-display text-2xl md:text-[26px]">{s.k}</div>
-              <div className="text-sand-200/85 text-[11px] uppercase tracking-[0.2em] mt-1">{s.v}</div>
+        {/* Slideshow controls + active caption (premium magazine style) */}
+        <div className="absolute bottom-10 md:bottom-12 right-6 md:right-10 z-10 flex items-center gap-5 text-sand-50/80">
+          <div className="text-right">
+            <div className="text-[10px] uppercase tracking-[0.28em] text-sand-200/55">
+              Now showing
             </div>
-          ))}
+            <div className="font-display text-lg md:text-xl text-sand-50">
+              {slides[active].caption}
+            </div>
+          </div>
+          <div className="flex flex-col gap-1.5">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                aria-label={`Show slide ${i + 1}`}
+                className={`h-px transition-all ${
+                  i === active ? "w-10 bg-ochre-500" : "w-6 bg-sand-50/40 hover:bg-sand-50/70"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* scroll cue */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-sand-200/55 text-[10px] uppercase tracking-[0.32em]">
+          <span>Scroll</span>
+          <span className="block h-8 w-px bg-gradient-to-b from-sand-200/60 to-transparent animate-pulse" />
         </div>
       </div>
 
-      {/* subtle scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sand-100/70 text-[11px] tracking-[0.32em] uppercase animate-fade-in">
-        Scroll
-      </div>
+      {/* Video modal */}
+      {videoOpen && (
+        <div
+          className="fixed inset-0 z-[70] bg-bark-900/95 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setVideoOpen(false)}
+        >
+          <button
+            onClick={() => setVideoOpen(false)}
+            className="absolute top-5 right-5 h-11 w-11 rounded-full bg-sand-50/10 text-sand-50 inline-flex items-center justify-center hover:bg-sand-50/20"
+            aria-label="Close video"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <div
+            className="relative w-full max-w-5xl aspect-video rounded-2xl overflow-hidden shadow-2xl shadow-bark-900/60"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <video
+              src="/videos/video-1.mp4"
+              controls
+              autoPlay
+              playsInline
+              className="absolute inset-0 h-full w-full object-cover bg-bark-900"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }

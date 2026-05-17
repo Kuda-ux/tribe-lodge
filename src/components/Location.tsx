@@ -1,8 +1,35 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { MapPin, Plane, Compass } from "lucide-react";
 import Reveal from "./Reveal";
 import { site } from "@/lib/site";
 
 export default function Location() {
+  const mapRef = useRef<HTMLDivElement | null>(null);
+  const [showMap, setShowMap] = useState(false);
+
+  // Lazy-load the iframe only when the wrapper enters viewport (saves ~500 KB on first paint)
+  useEffect(() => {
+    const el = mapRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShowMap(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    site.address
+  )}`;
+
   return (
     <section id="location" className="section bg-sand-100/50">
       <div className="container-px grid lg:grid-cols-2 gap-12 items-center">
@@ -49,7 +76,7 @@ export default function Location() {
             </div>
 
             <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.address)}`}
+              href={mapsLink}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-dark-outline mt-10"
@@ -60,14 +87,25 @@ export default function Location() {
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="relative rounded-3xl overflow-hidden shadow-xl shadow-bark-900/10 border border-sand-200/60 aspect-[4/5] md:aspect-[5/6]">
-            <iframe
-              title="The Tribe Lodge location map"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(site.address)}&output=embed`}
-              className="absolute inset-0 h-full w-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          <div
+            ref={mapRef}
+            className="relative rounded-3xl overflow-hidden shadow-xl shadow-bark-900/10 border border-sand-200/60 aspect-[4/5] md:aspect-[5/6] bg-sand-100"
+          >
+            {showMap ? (
+              <iframe
+                title="The Tribe Lodge location map"
+                src={`https://www.google.com/maps?q=${encodeURIComponent(site.address)}&output=embed`}
+                className="absolute inset-0 h-full w-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center text-bark-900/40 text-sm">
+                <span className="inline-flex items-center gap-2">
+                  <MapPin className="h-4 w-4" /> Loading map…
+                </span>
+              </div>
+            )}
           </div>
         </Reveal>
       </div>

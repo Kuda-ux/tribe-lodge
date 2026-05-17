@@ -5,14 +5,18 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
+  preload: true,
 });
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600"],
+  style: ["normal", "italic"],
   variable: "--font-display",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -24,7 +28,7 @@ export const metadata: Metadata = {
     "Bulawayo lodge",
     "Bulawayo accommodation",
     "Zimbabwe lodge",
-    "Burnside Bulawayo",
+    "Hillside Bulawayo",
     "conference facilities Bulawayo",
     "Presidential rooms Bulawayo",
   ],
@@ -35,13 +39,13 @@ export const metadata: Metadata = {
       "Peaceful accommodation in Bulawayo, Zimbabwe. Presidential rooms, conference facilities, on-site food and laundry.",
     type: "website",
     locale: "en_ZW",
-    images: ["/images/img-06.jpg"],
+    images: ["/images/img-05.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Tribe Lodge",
     description: "Peaceful accommodation in Bulawayo, Zimbabwe.",
-    images: ["/images/img-06.jpg"],
+    images: ["/images/img-05.jpg"],
   },
   icons: {
     icon: "/logo.jpg",
