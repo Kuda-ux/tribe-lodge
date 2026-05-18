@@ -9,6 +9,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Hard guarantee against horizontal scrolling on any device */
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -17,6 +20,19 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Defensive: prevent any media or stray child from forcing horizontal overflow */
+img, video, iframe, svg {
+  max-width: 100%;
+}
+
+/* Safer line-breaking for long unbreakable strings (URLs, etc) */
+p, li, h1, h2, h3, h4, span, a {
+  overflow-wrap: anywhere;
 }
 
 @layer components {

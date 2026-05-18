@@ -108,16 +108,17 @@ export default function Hero() {
           </div>
 
           <h1
-            className="h-display text-sand-50 text-5xl sm:text-6xl md:text-7xl lg:text-[92px] leading-[0.95] animate-fade-up"
+            className="h-display text-sand-50 text-[clamp(2.25rem,9vw,5.75rem)] xl:text-[88px] leading-[1.02] animate-fade-up break-words"
             style={{ animationDelay: "240ms" }}
           >
             Stay With Us,
             <br />
-            <span className="italic text-sand-200 relative inline-block">
+            <span className="italic text-sand-200 relative inline-block max-w-full">
               Create Memories.
               <svg
                 viewBox="0 0 300 12"
-                className="absolute -bottom-3 left-0 w-[80%] h-2 text-ochre-500"
+                preserveAspectRatio="none"
+                className="absolute -bottom-2 sm:-bottom-3 left-0 w-[80%] h-2 text-ochre-500"
                 aria-hidden
               >
                 <path
@@ -187,7 +188,7 @@ export default function Hero() {
         </div>
 
         {/* Slideshow controls + active caption (premium magazine style) */}
-        <div className="absolute bottom-10 md:bottom-12 right-6 md:right-10 z-10 flex items-center gap-5 text-sand-50/80">
+        <div className="hidden sm:flex absolute bottom-10 md:bottom-12 right-6 md:right-10 z-10 items-center gap-5 text-sand-50/80">
           <div className="text-right">
             <div className="text-[10px] uppercase tracking-[0.28em] text-sand-200/55">
               Now showing
@@ -208,6 +209,20 @@ export default function Hero() {
               />
             ))}
           </div>
+        </div>
+
+        {/* Mobile slide indicator (centered, simple) */}
+        <div className="sm:hidden flex justify-center gap-2 mt-10">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              aria-label={`Show slide ${i + 1}`}
+              className={`h-1 rounded-full transition-all ${
+                i === active ? "w-8 bg-ochre-500" : "w-3 bg-sand-50/40"
+              }`}
+            />
+          ))}
         </div>
 
         {/* scroll cue */}
