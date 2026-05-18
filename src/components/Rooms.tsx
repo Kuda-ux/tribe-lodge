@@ -1,124 +1,176 @@
 import Image from "next/image";
-import { Check, ArrowRight, Wifi, Snowflake, Car, Waves, ShieldCheck, Sparkles, Coffee, Bell } from "lucide-react";
+import {
+  Check,
+  ArrowRight,
+  Wifi,
+  Snowflake,
+  Car,
+  Waves,
+  ShieldCheck,
+  Sparkles,
+  Coffee,
+  Bell,
+  BedDouble,
+} from "lucide-react";
 import Reveal from "./Reveal";
 import { site } from "@/lib/site";
 
 const amenityIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  Wifi, Car, Snowflake, Waves, ShieldCheck, Sparkles, Coffee, Bell,
+  Wifi,
+  Car,
+  Snowflake,
+  Waves,
+  ShieldCheck,
+  Sparkles,
+  Coffee,
+  Bell,
 };
 
 export default function Rooms() {
+  const { roomOnly, withBreakfast } = site.pricing;
+
   return (
-    <section id="rooms" className="section bg-gradient-to-b from-sand-50 to-sand-100/60">
+    <section
+      id="rooms"
+      className="section bg-gradient-to-b from-sand-50 to-sand-100/60"
+    >
       <div className="container-px">
         <Reveal>
-          <div className="max-w-3xl">
-            <span className="eyebrow">Rooms &amp; Rates</span>
-            <h2 className="h-display text-4xl md:text-5xl lg:text-6xl mt-5 text-bark-900">
-              Three signature suites, one <em className="not-italic text-clay-600">unforgettable stay.</em>
-            </h2>
-            <p className="mt-5 text-bark-900/70 text-lg">
-              Each presidential suite is individually styled with bespoke headboards, statement
-              lighting and considered detail. <span className="font-semibold text-bark-900">$60 room only · $70 with breakfast.</span>
-            </p>
+          <div className="grid lg:grid-cols-12 gap-10 items-end">
+            <div className="lg:col-span-7">
+              <span className="eyebrow">Rooms &amp; Rates</span>
+              <h2 className="h-display text-4xl md:text-5xl lg:text-6xl mt-5 text-bark-900">
+                Eight Presidential Suites,
+                <br />
+                <em className="not-italic text-clay-600">individually styled.</em>
+              </h2>
+              <p className="mt-5 text-bark-900/70 text-lg max-w-2xl">
+                Every suite at The Tribe Lodge is a presidential-class room —
+                each with its own personality, all sharing the same level of
+                comfort and detail.
+              </p>
+            </div>
+
+            {/* Headline pricing card */}
+            <div className="lg:col-span-5">
+              <div className="bg-bark-900 text-sand-50 rounded-3xl p-6 md:p-7 relative overflow-hidden shadow-xl shadow-bark-900/15">
+                <div className="absolute -top-8 -right-8 h-32 w-32 rounded-full bg-ochre-500/15" />
+                <div className="absolute -bottom-10 -left-6 h-28 w-28 rounded-full bg-clay-600/15" />
+                <div className="relative">
+                  <div className="text-[10px] uppercase tracking-[0.3em] text-ochre-500 font-semibold">
+                    Per suite, per night
+                  </div>
+                  <div className="mt-3 grid grid-cols-2 gap-5">
+                    <div>
+                      <div className="font-display text-4xl md:text-5xl leading-none">
+                        ${roomOnly}
+                      </div>
+                      <div className="text-[10px] uppercase tracking-[0.2em] text-sand-200/70 mt-2">
+                        Room only
+                      </div>
+                    </div>
+                    <div>
+                      <div className="font-display text-4xl md:text-5xl leading-none">
+                        ${withBreakfast}
+                      </div>
+                      <div className="text-[10px] uppercase tracking-[0.2em] text-sand-200/70 mt-2">
+                        With breakfast
+                      </div>
+                    </div>
+                  </div>
+                  <a
+                    href="#contact"
+                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ochre-500 hover:text-sand-50 transition-colors"
+                  >
+                    Reserve your suite <ArrowRight className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </Reveal>
 
-        {/* Room cards */}
-        <div className="mt-14 space-y-10">
-          {site.rooms.map((room, i) => (
-            <Reveal key={room.slug} delay={i * 100}>
-              <article
-                className={`grid lg:grid-cols-12 gap-8 items-stretch ${
-                  i % 2 === 1 ? "lg:[&>:first-child]:order-2" : ""
-                }`}
+        {/* What every suite includes */}
+        <Reveal delay={100}>
+          <div className="mt-14 bg-white rounded-3xl border border-sand-200/60 p-6 md:p-8 shadow-sm">
+            <div className="flex flex-wrap items-center gap-4 mb-5">
+              <span className="h-10 w-10 rounded-full bg-bark-900 text-sand-50 inline-flex items-center justify-center">
+                <BedDouble className="h-5 w-5" />
+              </span>
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.28em] text-bark-900/55 font-semibold">
+                  Standard in every suite
+                </div>
+                <div className="font-display text-2xl text-bark-900">
+                  Designed for restful, premium stays.
+                </div>
+              </div>
+            </div>
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-3">
+              {site.suiteFeatures.map((f) => (
+                <li
+                  key={f}
+                  className="flex items-start gap-2.5 text-bark-900/85 text-sm"
+                >
+                  <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-ochre-500/15 text-ochre-600 shrink-0">
+                    <Check className="h-3 w-3" />
+                  </span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+
+        {/* The 8 suites — magazine grid */}
+        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {site.suites.map((suite, i) => (
+            <Reveal key={suite.slug} delay={(i % 4) * 80}>
+              <a
+                href="#contact"
+                className="group block relative aspect-[4/5] rounded-2xl overflow-hidden bg-bark-900/5 shine"
               >
-                {/* Image collage */}
-                <div className="lg:col-span-7 grid grid-cols-3 gap-3 h-[420px] md:h-[520px]">
-                  <div className="relative col-span-2 row-span-2 rounded-3xl overflow-hidden group">
-                    <Image
-                      src={room.images[0]}
-                      alt={room.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width:1024px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-bark-900/70 via-transparent to-transparent" />
-                    <div className="absolute bottom-5 left-5 right-5 text-sand-50">
-                      <div className="text-[11px] uppercase tracking-[0.3em] text-sand-200">{room.tagline}</div>
-                      <div className="font-display text-2xl md:text-3xl mt-1">{room.name}</div>
-                    </div>
+                <Image
+                  src={suite.image}
+                  alt={`${suite.name} — presidential suite at The Tribe Lodge`}
+                  fill
+                  sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-[1.3s] ease-out group-hover:scale-110"
+                  quality={86}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-bark-900/85 via-bark-900/10 to-transparent" />
+
+                {/* Suite number */}
+                <span className="absolute top-4 left-4 inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-sand-50/15 backdrop-blur-md border border-sand-50/25 text-sand-50 text-[10px] uppercase tracking-[0.25em] font-semibold">
+                  Suite {suite.number}
+                </span>
+
+                {/* Style chip top right */}
+                <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-bark-900/45 backdrop-blur-md text-sand-100 text-[9px] uppercase tracking-[0.2em] font-semibold">
+                  Superking
+                </span>
+
+                {/* Caption */}
+                <div className="absolute bottom-0 inset-x-0 p-5 text-sand-50 translate-y-1 group-hover:translate-y-0 transition-transform">
+                  <div className="font-display text-2xl leading-tight">
+                    {suite.name}
                   </div>
-                  {room.images.slice(1, 3).map((img, idx) => (
-                    <div key={img} className={`relative rounded-2xl overflow-hidden ${idx === 1 && room.images.length < 3 ? "hidden" : ""}`}>
-                      <Image
-                        src={img}
-                        alt={`${room.name} detail`}
-                        fill
-                        className="object-cover hover:scale-105 transition-transform duration-700"
-                        sizes="(max-width:1024px) 33vw, 16vw"
-                      />
-                    </div>
-                  ))}
-                  {room.images.length < 3 && (
-                    <div className="relative rounded-2xl overflow-hidden">
-                      <Image
-                        src={room.images[0]}
-                        alt={`${room.name} detail`}
-                        fill
-                        className="object-cover scale-110"
-                        sizes="(max-width:1024px) 33vw, 16vw"
-                      />
-                    </div>
-                  )}
+                  <div className="text-xs text-sand-200/80 mt-1">
+                    {suite.style}
+                  </div>
+                  <span className="block mt-3 h-px w-8 bg-ochre-500 transition-all duration-500 group-hover:w-16" />
+                  <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.25em] text-sand-100 opacity-0 group-hover:opacity-100 transition-opacity">
+                    Reserve <ArrowRight className="h-3 w-3" />
+                  </div>
                 </div>
-
-                {/* Details card */}
-                <div className="lg:col-span-5 bg-white rounded-3xl border border-sand-200/60 p-7 md:p-9 shadow-sm flex flex-col">
-                  <div className="flex items-center gap-2 text-ochre-600 text-xs uppercase tracking-[0.3em] font-semibold">
-                    <span className="h-px w-8 bg-ochre-600/60" /> Suite {i + 1} of {site.rooms.length}
-                  </div>
-
-                  <h3 className="h-display text-3xl mt-3 text-bark-900">{room.name}</h3>
-                  <p className="text-bark-900/65 mt-2 text-sm">{room.tagline}</p>
-
-                  <div className="grid grid-cols-2 gap-3 mt-6">
-                    <div className="rounded-xl border border-sand-200 p-4 text-center bg-sand-50">
-                      <div className="text-[10px] uppercase tracking-[0.2em] text-bark-900/55">Room Only</div>
-                      <div className="font-display text-3xl text-bark-900 mt-1">${room.priceNoBreakfast}</div>
-                      <div className="text-[10px] text-bark-900/50 mt-0.5">per night</div>
-                    </div>
-                    <div className="rounded-xl p-4 text-center bg-bark-900 text-sand-50 relative overflow-hidden">
-                      <div className="absolute -top-5 -right-5 h-16 w-16 rounded-full bg-ochre-500/20" />
-                      <div className="text-[10px] uppercase tracking-[0.2em] text-sand-200">+ Breakfast</div>
-                      <div className="font-display text-3xl mt-1">${room.priceWithBreakfast}</div>
-                      <div className="text-[10px] text-sand-200/80 mt-0.5">per night</div>
-                    </div>
-                  </div>
-
-                  <ul className="mt-6 space-y-2.5">
-                    {room.features.map((f) => (
-                      <li key={f} className="flex items-start gap-3 text-bark-900/85 text-sm">
-                        <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-ochre-500/15 text-ochre-600 shrink-0">
-                          <Check className="h-3 w-3" />
-                        </span>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <a href="#contact" className="btn-primary mt-7 self-start">
-                    Book {room.name} <ArrowRight className="h-4 w-4" />
-                  </a>
-                </div>
-              </article>
+              </a>
             </Reveal>
           ))}
         </div>
 
         {/* Amenities chip strip */}
         <Reveal delay={150}>
-          <div className="mt-16 bg-white rounded-2xl border border-sand-200/60 p-6 md:p-8">
+          <div className="mt-14 bg-white rounded-2xl border border-sand-200/60 p-6 md:p-8">
             <div className="text-center mb-5">
               <span className="eyebrow">Included with every suite</span>
             </div>
@@ -126,7 +178,10 @@ export default function Rooms() {
               {site.amenities.map((a) => {
                 const Icon = amenityIcons[a.icon] ?? Sparkles;
                 return (
-                  <span key={a.title} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sand-100 text-bark-900/85 text-sm">
+                  <span
+                    key={a.title}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sand-100 text-bark-900/85 text-sm"
+                  >
                     <Icon className="h-4 w-4 text-ochre-600" />
                     {a.title}
                   </span>

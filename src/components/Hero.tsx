@@ -3,28 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Phone, MessageCircle, ArrowRight, MapPin, Play, X, Star } from "lucide-react";
-import { site } from "@/lib/site";
-
-const reservations = site.phones.find((p) => p.role.startsWith("Reservations"))!;
-
-// 3 hero stills — one for each suite style
-const slides = [
-  {
-    src: "/images/img-05.jpg",
-    alt: "Tribal Suite with hand-woven Tonga basket wall art",
-    caption: "Tribal Suite",
-  },
-  {
-    src: "/images/img-08.jpg",
-    alt: "Onyx Presidential Suite with chandelier and black velvet headboard",
-    caption: "Onyx Presidential Suite",
-  },
-  {
-    src: "/images/img-02.jpg",
-    alt: "Navy Velvet Suite with crystal chandelier",
-    caption: "Navy Velvet Suite",
-  },
-];
+import { site, heroSlides as slides } from "@/lib/site";
 
 export default function Hero() {
   const [active, setActive] = useState(0);
@@ -136,8 +115,9 @@ export default function Hero() {
             className="mt-9 text-sand-100/90 text-lg md:text-xl max-w-2xl leading-relaxed animate-fade-up"
             style={{ animationDelay: "360ms" }}
           >
-            Authentic African hospitality at the heart of Bulawayo — three signature suites,
-            curated tours and warm service for travellers who appreciate the finer details.
+            Authentic African hospitality at the heart of Bulawayo — eight individually
+            styled presidential suites, curated tours and warm service for travellers
+            who appreciate the finer details.
           </p>
 
           <div
@@ -182,8 +162,8 @@ export default function Hero() {
               ))}
             </div>
             <span className="hidden sm:inline text-sand-200/40">|</span>
-            <span className="hidden sm:inline">Premium presidential suites from $60/night</span>
-            <span className="sm:hidden">From $60 / night</span>
+            <span className="hidden sm:inline">8 Presidential Suites · Superking beds · From $60/night</span>
+            <span className="sm:hidden">8 Presidential Suites · From $60</span>
           </div>
         </div>
 

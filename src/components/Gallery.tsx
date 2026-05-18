@@ -4,37 +4,9 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import Reveal from "./Reveal";
+import { galleryItems as items, type GalleryCategory } from "@/lib/site";
 
-type Category = "All" | "Suites" | "Pool & Grounds" | "Architecture" | "Tours";
-
-type GalleryItem = {
-  src: string;
-  title: string;
-  category: Exclude<Category, "All">;
-};
-
-const items: GalleryItem[] = [
-  // Suites
-  { src: "/images/img-05.jpg", title: "Tribal Suite", category: "Suites" },
-  { src: "/images/img-07.jpg", title: "Tribal Suite — Detail", category: "Suites" },
-  { src: "/images/img-02.jpg", title: "Navy Velvet Suite", category: "Suites" },
-  { src: "/images/img-03.jpg", title: "Navy Suite — Alt View", category: "Suites" },
-  { src: "/images/img-01.jpg", title: "Suite Lounge Detail", category: "Suites" },
-  { src: "/images/img-08.jpg", title: "Onyx Presidential Suite", category: "Suites" },
-  { src: "/images/img-23.jpg", title: "Onyx Suite — Side View", category: "Suites" },
-  { src: "/images/img-24.jpg", title: "Onyx Suite — Wide Angle", category: "Suites" },
-  // Pool & Grounds
-  { src: "/images/img-09.jpg", title: "Swimming Pool & Gazebo", category: "Pool & Grounds" },
-  { src: "/images/img-04.jpg", title: "Branded Steel Fence Detail", category: "Pool & Grounds" },
-  // Architecture / Vision
-  { src: "/images/img-10.jpg", title: "Master Plan — Aerial", category: "Architecture" },
-  { src: "/images/img-12.jpg", title: "Guest Block Facade", category: "Architecture" },
-  // Tours / Shuttle
-  { src: "/images/img-22.jpg", title: "Branded Shuttle", category: "Tours" },
-  { src: "/images/img-14.jpg", title: "Shuttle at the Lodge", category: "Tours" },
-  { src: "/images/img-19.jpg", title: "Shuttle — Side Profile", category: "Tours" },
-  { src: "/images/img-15.jpg", title: "Renault Master", category: "Tours" },
-];
+type Category = "All" | GalleryCategory;
 
 const categories: Category[] = ["All", "Suites", "Pool & Grounds", "Architecture", "Tours"];
 

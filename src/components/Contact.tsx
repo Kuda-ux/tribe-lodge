@@ -19,7 +19,7 @@ export default function Contact() {
     phone: "",
     checkin: "",
     nights: "1",
-    suite: "Tribal Suite",
+    suite: "Any available suite",
     breakfast: "with",
     message: "",
   });
@@ -160,9 +160,10 @@ export default function Contact() {
                   value={form.suite}
                   onChange={(e) => setForm({ ...form, suite: e.target.value })}
                 >
-                  {site.rooms.map((r) => (
-                    <option key={r.slug} value={r.name}>
-                      {r.name}
+                  <option value="Any available suite">Any available suite</option>
+                  {site.suites.map((s) => (
+                    <option key={s.slug} value={`Suite ${s.number} — ${s.name}`}>
+                      Suite {s.number} — {s.name} ({s.style})
                     </option>
                   ))}
                 </select>

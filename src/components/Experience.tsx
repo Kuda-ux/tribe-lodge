@@ -8,20 +8,20 @@ import { site } from "@/lib/site";
 const cards = [
   {
     src: site.videos[0],
-    poster: "/images/img-05.jpg",
-    title: "The Tribal Suite",
+    poster: "/images/img-34.jpg",
+    title: "Acacia Suite",
     eyebrow: "Walk-through 01",
   },
   {
     src: site.videos[1],
-    poster: "/images/img-08.jpg",
-    title: "The Onyx Suite",
+    poster: "/images/img-25.jpg",
+    title: "Onyx Suite",
     eyebrow: "Walk-through 02",
   },
   {
     src: site.videos[2],
-    poster: "/images/img-02.jpg",
-    title: "The Navy Suite",
+    poster: "/images/img-30.jpg",
+    title: "Heritage Suite",
     eyebrow: "Walk-through 03",
   },
 ];

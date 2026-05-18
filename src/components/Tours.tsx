@@ -21,8 +21,8 @@ export default function Tours() {
             <div className="mt-7 grid grid-cols-2 gap-4">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/img-22.jpg"
-                  alt="The Tribe Lodge shuttle"
+                  src="/images/img-14.jpg"
+                  alt="The Tribe Lodge branded shuttle"
                   fill
                   className="object-cover"
                   sizes="(max-width:1024px) 50vw, 25vw"
@@ -72,7 +72,7 @@ export default function Tours() {
               <div>
                 <div className="font-display text-xl">Airport Transfers</div>
                 <p className="text-sand-200/80 text-sm mt-1">
-                  Comfortable Renault Master shuttle, branded and ready to welcome you on arrival.
+                  Our comfortable branded shuttle is ready to welcome you on arrival.
                   Just share your flight details when you book.
                 </p>
               </div>

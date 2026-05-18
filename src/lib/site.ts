@@ -3,7 +3,7 @@ export const site = {
   tagline: "Stay With Us, Create Memories.",
   shortPitch: "Stay in Style. Feel at Home.",
   description:
-    "A welcoming hospitality destination in Bulawayo, Zimbabwe — offering peaceful accommodation, conference facilities, on-site dining, laundry, and airport transfers for business and leisure travelers.",
+    "A welcoming hospitality destination in Bulawayo, Zimbabwe — eight individually styled presidential suites, conference facilities, on-site dining, laundry, airport transfers and curated tours.",
   address: "3 Knotts Way, Hillside, Bulawayo, Zimbabwe",
   city: "Bulawayo, Zimbabwe",
   email: "info@thetribelodge.com",
@@ -49,59 +49,90 @@ export const site = {
     },
   ],
 
-  rooms: [
+  // Pricing — single rate, all 8 suites are presidential class
+  pricing: {
+    roomOnly: 60,
+    withBreakfast: 70,
+    currency: "USD",
+  },
+
+  // 8 individually-styled presidential suites — all superking, en-suite, A/C
+  suites: [
     {
-      slug: "tribal-suite",
-      name: "Tribal Suite",
-      tagline: "Authentic African elegance",
-      priceNoBreakfast: 60,
-      priceWithBreakfast: 70,
-      features: [
-        "Cream velvet upholstered headboard",
-        "Hand-woven Tonga basket wall art",
-        "King-size bed with premium linen",
-        "Tribal accent pillows & throws",
-        "En-suite bathroom & free Wi-Fi",
-      ],
-      images: ["/images/img-05.jpg", "/images/img-07.jpg"],
+      slug: "onyx-i",
+      number: "01",
+      name: "Onyx",
+      style: "Black velvet",
+      image: "/images/img-25.jpg",
     },
     {
-      slug: "navy-suite",
-      name: "Navy Velvet Suite",
-      tagline: "Refined sophistication",
-      priceNoBreakfast: 60,
-      priceWithBreakfast: 70,
-      features: [
-        "Deep-navy velvet feature headboard",
-        "Crystal chandelier & pendant lighting",
-        "King bed with gold satin runner",
-        "Built-in wardrobes & dressing area",
-        "Air conditioning & fast Wi-Fi",
-      ],
-      images: ["/images/img-02.jpg", "/images/img-03.jpg", "/images/img-01.jpg"],
+      slug: "onyx-ii",
+      number: "02",
+      name: "Onyx II",
+      style: "Black velvet",
+      image: "/images/img-28.jpg",
     },
     {
-      slug: "onyx-suite",
-      name: "Onyx Presidential Suite",
-      tagline: "Bold, modern, executive",
-      priceNoBreakfast: 60,
-      priceWithBreakfast: 70,
-      features: [
-        "Black velvet statement headboard",
-        "Gold-tone chandelier & pendant lights",
-        "King-size bed with premium linen",
-        "Spacious work-friendly suite",
-        "Air conditioning & fast Wi-Fi",
-      ],
-      images: ["/images/img-08.jpg", "/images/img-23.jpg", "/images/img-24.jpg"],
+      slug: "sapphire",
+      number: "03",
+      name: "Sapphire",
+      style: "Navy velvet",
+      image: "/images/img-31.jpg",
     },
+    {
+      slug: "indigo",
+      number: "04",
+      name: "Indigo",
+      style: "Navy velvet",
+      image: "/images/img-29.jpg",
+    },
+    {
+      slug: "heritage",
+      number: "05",
+      name: "Heritage",
+      style: "Sand velvet · woven baskets",
+      image: "/images/img-30.jpg",
+    },
+    {
+      slug: "acacia",
+      number: "06",
+      name: "Acacia",
+      style: "Champagne · gold chandelier",
+      image: "/images/img-34.jpg",
+    },
+    {
+      slug: "savannah",
+      number: "07",
+      name: "Savannah",
+      style: "Champagne · tribal plates",
+      image: "/images/img-32.jpg",
+    },
+    {
+      slug: "tribal",
+      number: "08",
+      name: "Tribal",
+      style: "Cream velvet · Tonga baskets",
+      image: "/images/img-05.jpg",
+    },
+  ],
+
+  // What every presidential suite includes
+  suiteFeatures: [
+    "Superking-size bed with premium linen",
+    "Velvet upholstered feature headboard",
+    "Air conditioning & free fast Wi-Fi",
+    "En-suite bathroom with hot shower",
+    "Built-in wardrobes & dressing area",
+    "Bedside lamps & ambient lighting",
+    "Daily housekeeping & fresh towels",
+    "24-hour reception & secure parking",
   ],
 
   services: [
     {
-      title: "Accommodation",
+      title: "Presidential Accommodation",
       description:
-        "Three beautifully styled presidential suites — Tribal, Navy and Onyx — designed for restful, peaceful stays.",
+        "Eight individually styled presidential suites — every one with a superking bed, en-suite bathroom and air-conditioning.",
       icon: "BedDouble",
     },
     {
@@ -147,15 +178,13 @@ export const site = {
     { title: "Personalized Service", icon: "Sparkles" },
   ],
 
-  // What "Why Choose" bullets — taken from official marketing
   whyChoose: [
-    "Spacious & elegant presidential suites",
+    "Eight spacious presidential suites — all with superking beds",
     "Modern amenities for a relaxing stay",
     "Clean, comfortable & secure environment",
-    "Excellent service, every time",
+    "Excellent personalised service, every time",
   ],
 
-  // Tour destinations (from the Plan Your Trip flyer)
   tours: [
     {
       name: "Matobo Hills",
@@ -179,24 +208,19 @@ export const site = {
     },
   ],
 
-  // Image catalog — actual content of every photo
+  // Image catalog
   images: {
-    tribalSuite: ["/images/img-05.jpg", "/images/img-07.jpg"],
-    navySuite: ["/images/img-02.jpg", "/images/img-03.jpg", "/images/img-01.jpg"],
-    onyxSuite: ["/images/img-08.jpg", "/images/img-23.jpg", "/images/img-24.jpg"],
     pool: "/images/img-09.jpg",
-    grounds: "/images/img-04.jpg", // branded fence with giraffe cutout
+    grounds: "/images/img-04.jpg",
     architecture: ["/images/img-10.jpg", "/images/img-12.jpg"],
     logoColor: "/images/img-13.jpg",
+    // Only branded shuttle photos
     shuttle: [
       "/images/img-14.jpg",
-      "/images/img-15.jpg",
-      "/images/img-16.jpg",
       "/images/img-17.jpg",
       "/images/img-18.jpg",
-      "/images/img-19.jpg",
       "/images/img-20.jpg",
-      "/images/img-22.jpg",
+      "/images/img-21.jpg",
     ],
     flyers: ["/images/img-06.jpg", "/images/img-11.jpg", "/images/img-21.jpg"],
   },
@@ -204,36 +228,52 @@ export const site = {
   videos: ["/videos/video-1.mp4", "/videos/video-2.mp4", "/videos/video-3.mp4"],
 };
 
-// Gallery — all real photos (excludes flyers); ordered for visual variety
-export const galleryImages: string[] = [
-  // Star tribal room
-  "/images/img-05.jpg",
+export type Suite = (typeof site.suites)[number];
+
+// Hero slideshow — three of the most striking new bright images
+export const heroSlides = [
+  {
+    src: "/images/img-34.jpg",
+    alt: "Acacia Suite — champagne headboard with hand-woven Tonga baskets and gold chandelier",
+    caption: "Acacia Suite",
+  },
+  {
+    src: "/images/img-25.jpg",
+    alt: "Onyx Suite — black velvet feature headboard, bright modern interior",
+    caption: "Onyx Suite",
+  },
+  {
+    src: "/images/img-30.jpg",
+    alt: "Heritage Suite — sand velvet headboard with woven baskets and green accent",
+    caption: "Heritage Suite",
+  },
+];
+
+// Gallery — bright, beautiful curated set (no unbranded shuttle photos)
+export type GalleryCategory = "Suites" | "Pool & Grounds" | "Architecture" | "Tours";
+export const galleryItems: { src: string; title: string; category: GalleryCategory }[] = [
+  // Suites — lead with the new bright photos
+  { src: "/images/img-34.jpg", title: "Acacia Suite", category: "Suites" },
+  { src: "/images/img-25.jpg", title: "Onyx Suite", category: "Suites" },
+  { src: "/images/img-31.jpg", title: "Sapphire Suite", category: "Suites" },
+  { src: "/images/img-30.jpg", title: "Heritage Suite", category: "Suites" },
+  { src: "/images/img-32.jpg", title: "Savannah Suite", category: "Suites" },
+  { src: "/images/img-28.jpg", title: "Onyx II", category: "Suites" },
+  { src: "/images/img-29.jpg", title: "Indigo Suite", category: "Suites" },
+  { src: "/images/img-05.jpg", title: "Tribal Suite", category: "Suites" },
+  { src: "/images/img-33.jpg", title: "Savannah — Wide View", category: "Suites" },
+  { src: "/images/img-26.jpg", title: "Onyx — Detail", category: "Suites" },
   // Pool & grounds
-  "/images/img-09.jpg",
-  // Onyx suite
-  "/images/img-08.jpg",
-  // Navy suite hero
-  "/images/img-02.jpg",
-  // Tribal alt
-  "/images/img-07.jpg",
-  // Grounds branding detail
-  "/images/img-04.jpg",
-  // Suite living detail
-  "/images/img-01.jpg",
-  // Onyx alt
-  "/images/img-23.jpg",
-  // Navy alt
-  "/images/img-03.jpg",
-  // Architecture rendering
-  "/images/img-10.jpg",
-  // Onyx alt 2
-  "/images/img-24.jpg",
-  // Architecture rendering 2
-  "/images/img-12.jpg",
-  // Shuttle (selection)
-  "/images/img-14.jpg",
-  "/images/img-22.jpg",
-  "/images/img-19.jpg",
+  { src: "/images/img-09.jpg", title: "Swimming Pool & Gazebo", category: "Pool & Grounds" },
+  { src: "/images/img-04.jpg", title: "Branded Steel Fence", category: "Pool & Grounds" },
+  // Architecture / vision
+  { src: "/images/img-10.jpg", title: "Master Plan — Aerial", category: "Architecture" },
+  { src: "/images/img-12.jpg", title: "Guest Block Facade", category: "Architecture" },
+  // Tours / branded shuttle only
+  { src: "/images/img-21.jpg", title: "Plan Your Trip With Us", category: "Tours" },
+  { src: "/images/img-14.jpg", title: "Our Branded Shuttle", category: "Tours" },
+  { src: "/images/img-17.jpg", title: "Shuttle — Rear Detail", category: "Tours" },
+  { src: "/images/img-20.jpg", title: "Shuttle — Side", category: "Tours" },
 ];
 
 export type Site = typeof site;

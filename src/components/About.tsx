@@ -9,22 +9,22 @@ export default function About() {
       <div className="container-px grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <Reveal>
           <div className="grid grid-cols-2 gap-4">
-            {/* Star tribal-themed suite */}
+            {/* Star Acacia suite — brightest new image */}
             <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
               <Image
-                src="/images/img-05.jpg"
-                alt="Tribal Suite at The Tribe Lodge"
+                src="/images/img-34.jpg"
+                alt="Acacia presidential suite at The Tribe Lodge"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
                 sizes="(max-width:1024px) 50vw, 30vw"
               />
             </div>
             <div className="grid gap-4 mt-10">
-              {/* Branded steel-cut fence detail */}
+              {/* Heritage suite */}
               <div className="relative aspect-square overflow-hidden rounded-2xl">
                 <Image
-                  src="/images/img-04.jpg"
-                  alt="Branded steel fence with giraffe motif"
+                  src="/images/img-30.jpg"
+                  alt="Heritage suite with woven baskets"
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-700"
                   sizes="(max-width:1024px) 50vw, 30vw"
@@ -53,8 +53,8 @@ export default function About() {
             <p className="mt-6 text-bark-900/75 text-lg leading-relaxed">
               The Tribe Lodge is a welcoming hospitality destination offering comfortable
               accommodation in a calm, beautifully styled setting in the leafy Hillside suburb of
-              Bulawayo. Each presidential suite is uniquely styled — Tribal, Navy and Onyx — and
-              every guest is treated like family.
+              Bulawayo. <strong className="text-bark-900">All eight suites are presidential class</strong> — each individually styled, all with
+              superking beds — and every guest is treated like family.
             </p>
             <p className="mt-4 text-bark-900/75 text-lg leading-relaxed">
               Beyond the rooms we offer conference facilities, on-site dining, laundry services,
@@ -73,7 +73,7 @@ export default function About() {
               ))}
             </div>
 
-            <a href="#rooms" className="btn-dark-outline mt-10">Discover Our Suites</a>
+            <a href="#rooms" className="btn-dark-outline mt-10">Discover Our 8 Suites</a>
           </div>
         </Reveal>
       </div>

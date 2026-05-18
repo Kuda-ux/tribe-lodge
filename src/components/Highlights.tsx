@@ -1,7 +1,7 @@
 import { BedDouble, Presentation, UtensilsCrossed, Shirt, BusFront, MapPinned } from "lucide-react";
 
 const items = [
-  { icon: BedDouble, title: "Accommodation", text: "3 styled suites" },
+  { icon: BedDouble, title: "Accommodation", text: "8 presidential suites" },
   { icon: Presentation, title: "Conference", text: "Meetings & events" },
   { icon: UtensilsCrossed, title: "Food On Site", text: "Daily meals" },
   { icon: Shirt, title: "Laundry", text: "On-site service" },
