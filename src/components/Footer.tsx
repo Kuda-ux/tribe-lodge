@@ -21,7 +21,7 @@ export default function Footer() {
             warm service — all in one place.
           </p>
           <div className="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sand-50/[0.06] text-sand-200 text-xs">
-            <span>Stay in style. Feel at home.</span>
+            <span>{site.motto}.</span>
           </div>
         </div>
 

@@ -18,25 +18,15 @@ export default function Tours() {
               city transfers and curated excursions to Zimbabwe's most iconic destinations.
             </p>
 
-            <div className="mt-7 grid grid-cols-2 gap-4">
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
-                <Image
-                  src="/images/img-14.jpg"
-                  alt="The Tribe Lodge branded shuttle"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width:1024px) 50vw, 25vw"
-                />
-              </div>
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
-                <Image
-                  src="/images/img-21.jpg"
-                  alt="The Tribe Lodge — Plan Your Trip With Us"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width:1024px) 50vw, 25vw"
-                />
-              </div>
+            <div className="mt-7 relative aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/img-21.jpg"
+                alt="The Tribe Lodge — Plan Your Trip With Us"
+                fill
+                className="object-cover"
+                sizes="(max-width:1024px) 100vw, 50vw"
+                quality={88}
+              />
             </div>
 
             <a href="#contact" className="btn-primary mt-8">

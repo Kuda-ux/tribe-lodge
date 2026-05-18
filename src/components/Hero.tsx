@@ -78,12 +78,12 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Animated wordmark above headline */}
+          {/* Brand motto */}
           <div
-            className="text-ochre-500 text-xs sm:text-sm tracking-[0.5em] uppercase font-semibold mb-5 animate-fade-up"
+            className="text-ochre-500 text-[11px] sm:text-sm tracking-[0.4em] sm:tracking-[0.45em] uppercase font-semibold mb-5 animate-fade-up"
             style={{ animationDelay: "120ms" }}
           >
-            ✦ The Tribe Lodge ✦
+            ✦ {site.motto} ✦
           </div>
 
           <h1

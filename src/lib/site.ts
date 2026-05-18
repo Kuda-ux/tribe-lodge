@@ -1,7 +1,8 @@
 export const site = {
   name: "The Tribe Lodge",
   tagline: "Stay With Us, Create Memories.",
-  shortPitch: "Stay in Style. Feel at Home.",
+  shortPitch: "A place where comfort meets culture.",
+  motto: "A place where comfort meets culture",
   description:
     "A welcoming hospitality destination in Bulawayo, Zimbabwe — eight individually styled presidential suites, conference facilities, on-site dining, laundry, airport transfers and curated tours.",
   address: "3 Knotts Way, Hillside, Bulawayo, Zimbabwe",
@@ -214,14 +215,8 @@ export const site = {
     grounds: "/images/img-04.jpg",
     architecture: ["/images/img-10.jpg", "/images/img-12.jpg"],
     logoColor: "/images/img-13.jpg",
-    // Only branded shuttle photos
-    shuttle: [
-      "/images/img-14.jpg",
-      "/images/img-17.jpg",
-      "/images/img-18.jpg",
-      "/images/img-20.jpg",
-      "/images/img-21.jpg",
-    ],
+    // Only the branded marketing flyer (all on-vehicle photos lack Tribe branding)
+    shuttle: ["/images/img-21.jpg"],
     flyers: ["/images/img-06.jpg", "/images/img-11.jpg", "/images/img-21.jpg"],
   },
 
@@ -269,11 +264,8 @@ export const galleryItems: { src: string; title: string; category: GalleryCatego
   // Architecture / vision
   { src: "/images/img-10.jpg", title: "Master Plan — Aerial", category: "Architecture" },
   { src: "/images/img-12.jpg", title: "Guest Block Facade", category: "Architecture" },
-  // Tours / branded shuttle only
+  // Tours — branded marketing flyer only
   { src: "/images/img-21.jpg", title: "Plan Your Trip With Us", category: "Tours" },
-  { src: "/images/img-14.jpg", title: "Our Branded Shuttle", category: "Tours" },
-  { src: "/images/img-17.jpg", title: "Shuttle — Rear Detail", category: "Tours" },
-  { src: "/images/img-20.jpg", title: "Shuttle — Side", category: "Tours" },
 ];
 
 export type Site = typeof site;
