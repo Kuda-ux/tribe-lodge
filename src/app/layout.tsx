@@ -111,7 +111,7 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: "add-your-google-search-console-token-here",
+    google: "cb9e0a28b7d8003e",
   },
 
   category: "travel",
