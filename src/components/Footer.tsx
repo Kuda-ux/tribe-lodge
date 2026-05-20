@@ -103,7 +103,33 @@ export default function Footer() {
       <div className="border-t border-sand-50/10">
         <div className="container-px py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-sand-200/60">
           <div>© {new Date().getFullYear()} The Tribe Lodge. All rights reserved.</div>
-          <div>Hillside · Bulawayo · Zimbabwe</div>
+          <div className="flex items-center gap-4">
+            <span>Hillside · Bulawayo · Zimbabwe</span>
+            <span className="hidden sm:inline text-sand-50/20">|</span>
+            <span className="hidden sm:inline">
+              Website by{" "}
+              <a
+                href="https://kuwexstudios.co.zw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ochre-500/80 hover:text-ochre-500 transition-colors font-medium"
+              >
+                KuWeX Studios
+              </a>
+            </span>
+          </div>
+        </div>
+        {/* Mobile KuWeX credit */}
+        <div className="sm:hidden text-center pb-4 text-xs text-sand-200/50">
+          Website by{" "}
+          <a
+            href="https://kuwexstudios.co.zw"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-ochre-500/80 hover:text-ochre-500 transition-colors font-medium"
+          >
+            KuWeX Studios
+          </a>
         </div>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
+import StructuredData from "@/components/StructuredData";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,38 +20,101 @@ const cormorant = Cormorant_Garamond({
   preload: true,
 });
 
+const BASE_URL = "https://thetribelodge.co.zw";
+const OG_IMAGE = `${BASE_URL}/og-image.jpg`;
+
 export const metadata: Metadata = {
-  title: "The Tribe Lodge — Peaceful Stays in Bulawayo, Zimbabwe",
+  metadataBase: new URL(BASE_URL),
+
+  title: {
+    default: "The Tribe Lodge | Luxury Accommodation in Bulawayo, Zimbabwe",
+    template: "%s | The Tribe Lodge — Bulawayo, Zimbabwe",
+  },
   description:
-    "The Tribe Lodge offers comfortable accommodation, conference facilities, on-site food and laundry in a peaceful Bulawayo setting. Presidential rooms from $60. Book your stay today.",
+    "The Tribe Lodge — A place where comfort meets culture. 8 presidential suites with superking beds in Hillside, Bulawayo. From $60/night. Conference facilities, on-site dining, airport transfers & curated tours. Book now.",
+
   keywords: [
     "The Tribe Lodge",
-    "Bulawayo lodge",
     "Bulawayo accommodation",
-    "Zimbabwe lodge",
+    "Bulawayo lodge",
     "Hillside Bulawayo",
+    "Zimbabwe lodge",
+    "presidential suites Bulawayo",
+    "luxury accommodation Bulawayo",
+    "hotel Bulawayo Zimbabwe",
+    "bed and breakfast Bulawayo",
     "conference facilities Bulawayo",
-    "Presidential rooms Bulawayo",
+    "airport transfer Bulawayo",
+    "Matobo Hills tour",
+    "Victoria Falls tour",
+    "where to stay Bulawayo",
+    "Bulawayo hotel",
+    "Zimbabwe accommodation",
+    "business travel Bulawayo",
+    "thetribelodge.co.zw",
   ],
-  metadataBase: new URL("https://thetribelodge.com"),
-  openGraph: {
-    title: "The Tribe Lodge — Stay With Us, Create Memories.",
-    description:
-      "Peaceful accommodation in Bulawayo, Zimbabwe. Presidential rooms, conference facilities, on-site food and laundry.",
-    type: "website",
-    locale: "en_ZW",
-    images: ["/images/img-05.jpg"],
+
+  authors: [{ name: "The Tribe Lodge", url: BASE_URL }],
+  creator: "KuWeX Studios",
+  publisher: "The Tribe Lodge",
+
+  alternates: {
+    canonical: BASE_URL,
   },
+
+  openGraph: {
+    type: "website",
+    url: BASE_URL,
+    siteName: "The Tribe Lodge",
+    locale: "en_ZW",
+    title: "The Tribe Lodge — A place where comfort meets culture",
+    description:
+      "8 individually styled presidential suites in Hillside, Bulawayo. Superking beds, en-suite bathrooms, air-conditioning. From $60/night. Conference facilities, curated tours & airport transfers.",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "The Tribe Lodge — Presidential Suites in Bulawayo, Zimbabwe",
+        type: "image/jpeg",
+      },
+    ],
+  },
+
   twitter: {
     card: "summary_large_image",
-    title: "The Tribe Lodge",
-    description: "Peaceful accommodation in Bulawayo, Zimbabwe.",
-    images: ["/images/img-05.jpg"],
+    site: "@thetribelodge",
+    creator: "@thetribelodge",
+    title: "The Tribe Lodge — A place where comfort meets culture",
+    description:
+      "8 presidential suites in Hillside, Bulawayo, Zimbabwe. From $60/night. Book now.",
+    images: [OG_IMAGE],
   },
+
   icons: {
-    icon: "/logo.jpg",
-    apple: "/logo.jpg",
+    icon: [
+      { url: "/logo.jpg", type: "image/jpeg" },
+    ],
+    apple: [{ url: "/logo.jpg" }],
   },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  verification: {
+    google: "add-your-google-search-console-token-here",
+  },
+
+  category: "travel",
 };
 
 export const viewport: Viewport = {
@@ -62,7 +126,22 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
-      <body>{children}</body>
+      <head>
+        {/* Geo tags — boost local Zimbabwe / Bulawayo searches */}
+        <meta name="geo.region" content="ZW-BU" />
+        <meta name="geo.placename" content="Bulawayo, Zimbabwe" />
+        <meta name="geo.position" content="-20.1325;28.6261" />
+        <meta name="ICBM" content="-20.1325, 28.6261" />
+        {/* Mobile web-app */}
+        <meta name="application-name" content="The Tribe Lodge" />
+        <meta name="apple-mobile-web-app-title" content="Tribe Lodge" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      </head>
+      <body>
+        <StructuredData />
+        {children}
+      </body>
     </html>
   );
 }
