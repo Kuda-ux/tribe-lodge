@@ -8,8 +8,6 @@ import { site } from "@/lib/site";
 
 const flagEmoji: Record<string, string> = {
   ZW: "🇿🇼",
-  GB: "🇬🇧",
-  ZM: "🇿🇲",
 };
 
 export default function Contact() {
@@ -28,7 +26,7 @@ export default function Contact() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const text = encodeURIComponent(
-      `Hello Tribe Lodge,\n\nI'd like to book a stay.\n\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nSuite: ${form.suite}\nCheck-in: ${form.checkin}\nNights: ${form.nights}\nBreakfast: ${form.breakfast === "with" ? "Yes ($70/night)" : "No ($60/night)"}\n\nMessage: ${form.message}`
+      `Hello Tribe Lodge,\n\nI'd like to book a stay.\n\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nSuite: ${form.suite}\nCheck-in: ${form.checkin}\nNights: ${form.nights}\nBreakfast: ${form.breakfast === "with" ? "Yes" : "No"}\n\nMessage: ${form.message}`
     );
     window.open(`https://wa.me/${site.whatsapp.tel.replace("+", "")}?text=${text}`, "_blank");
     setSent(true);
@@ -192,8 +190,8 @@ export default function Contact() {
                     value={form.breakfast}
                     onChange={(e) => setForm({ ...form, breakfast: e.target.value })}
                   >
-                    <option value="with">With Breakfast ($70/night)</option>
-                    <option value="without">Room only ($60/night)</option>
+                    <option value="with">With Breakfast</option>
+                    <option value="without">Room only</option>
                   </select>
                 </Field>
               </div>

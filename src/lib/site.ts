@@ -9,8 +9,8 @@ export const site = {
   city: "Bulawayo, Zimbabwe",
   email: "info@thetribelodge.com",
 
-  // WhatsApp goes to the UK number per business preference
-  whatsapp: { display: "+44 7911 717 861", tel: "+447911717861" },
+  // WhatsApp goes to the lodge mobile number
+  whatsapp: { display: "+263 78 423 6202", tel: "+263784236202" },
 
   phones: [
     {
@@ -28,34 +28,13 @@ export const site = {
       whatsapp: false,
     },
     {
-      role: "Mobile",
+      role: "WhatsApp / Mobile",
       flag: "ZW",
       display: "+263 78 423 6202",
       tel: "+263784236202",
-      whatsapp: false,
-    },
-    {
-      role: "WhatsApp / UK Office",
-      flag: "GB",
-      display: "+44 7911 717 861",
-      tel: "+447911717861",
       whatsapp: true,
     },
-    {
-      role: "Zambia Office",
-      flag: "ZM",
-      display: "+260 97 676 3687",
-      tel: "+260976763687",
-      whatsapp: false,
-    },
   ],
-
-  // Pricing — single rate, all 8 suites are presidential class
-  pricing: {
-    roomOnly: 60,
-    withBreakfast: 70,
-    currency: "USD",
-  },
 
   // 8 individually-styled presidential suites — all superking, en-suite, A/C
   suites: [

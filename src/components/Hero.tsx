@@ -162,8 +162,8 @@ export default function Hero() {
               ))}
             </div>
             <span className="hidden sm:inline text-sand-200/40">|</span>
-            <span className="hidden sm:inline">8 Presidential Suites · Superking beds · From $60/night</span>
-            <span className="sm:hidden">8 Presidential Suites · From $60</span>
+            <span className="hidden sm:inline">8 Presidential Suites · Superking beds · Enquire for rates</span>
+            <span className="sm:hidden">8 Presidential Suites · Enquire for rates</span>
           </div>
         </div>
 

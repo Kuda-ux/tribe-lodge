@@ -27,8 +27,6 @@ const amenityIcons: Record<string, React.ComponentType<{ className?: string }>> 
 };
 
 export default function Rooms() {
-  const { roomOnly, withBreakfast } = site.pricing;
-
   return (
     <section
       id="rooms"
@@ -38,7 +36,7 @@ export default function Rooms() {
         <Reveal>
           <div className="grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-7">
-              <span className="eyebrow">Rooms &amp; Rates</span>
+              <span className="eyebrow">Rooms</span>
               <h2 className="h-display text-4xl md:text-5xl lg:text-6xl mt-5 text-bark-900">
                 Eight Presidential Suites,
                 <br />
@@ -51,33 +49,21 @@ export default function Rooms() {
               </p>
             </div>
 
-            {/* Headline pricing card */}
+            {/* Enquire CTA card */}
             <div className="lg:col-span-5">
               <div className="bg-bark-900 text-sand-50 rounded-3xl p-6 md:p-7 relative overflow-hidden shadow-xl shadow-bark-900/15">
                 <div className="absolute -top-8 -right-8 h-32 w-32 rounded-full bg-ochre-500/15" />
                 <div className="absolute -bottom-10 -left-6 h-28 w-28 rounded-full bg-clay-600/15" />
                 <div className="relative">
                   <div className="text-[10px] uppercase tracking-[0.3em] text-ochre-500 font-semibold">
-                    Per suite, per night
+                    Rates available on request
                   </div>
-                  <div className="mt-3 grid grid-cols-2 gap-5">
-                    <div>
-                      <div className="font-display text-4xl md:text-5xl leading-none">
-                        ${roomOnly}
-                      </div>
-                      <div className="text-[10px] uppercase tracking-[0.2em] text-sand-200/70 mt-2">
-                        Room only
-                      </div>
-                    </div>
-                    <div>
-                      <div className="font-display text-4xl md:text-5xl leading-none">
-                        ${withBreakfast}
-                      </div>
-                      <div className="text-[10px] uppercase tracking-[0.2em] text-sand-200/70 mt-2">
-                        With breakfast
-                      </div>
-                    </div>
+                  <div className="mt-4 font-display text-2xl md:text-3xl leading-tight text-sand-50">
+                    Enquire for our best available rates.
                   </div>
+                  <p className="mt-3 text-sm text-sand-200/70">
+                    All eight suites are presidential class — contact us for pricing and availability.
+                  </p>
                   <a
                     href="#contact"
                     className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ochre-500 hover:text-sand-50 transition-colors"

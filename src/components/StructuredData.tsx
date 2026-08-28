@@ -83,9 +83,9 @@ export default function StructuredData() {
           bed: { "@type": "BedDetails", numberOfBeds: 1, typeOfBed: "Superking" },
           offers: {
             "@type": "Offer",
-            name: "Room Only",
-            price: site.pricing.roomOnly,
+            name: "Presidential Suite — Enquire for rates",
             priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
           },
         })),
       },
@@ -139,7 +139,7 @@ export default function StructuredData() {
             name: "How much does a room at The Tribe Lodge cost?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Rooms start from $60 per night for room only, or $70 per night with breakfast included.",
+              text: "Rates are available on request. Please contact us via WhatsApp or phone for the best available pricing and current availability.",
             },
           },
           {

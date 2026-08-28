@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | The Tribe Lodge — Bulawayo, Zimbabwe",
   },
   description:
-    "The Tribe Lodge — A place where comfort meets culture. 8 presidential suites with superking beds in Hillside, Bulawayo. From $60/night. Conference facilities, on-site dining, airport transfers & curated tours. Book now.",
+    "The Tribe Lodge — A place where comfort meets culture. 8 presidential suites with superking beds in Hillside, Bulawayo. Conference facilities, on-site dining, airport transfers & curated tours. Book now.",
 
   keywords: [
     "The Tribe Lodge",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     locale: "en_ZW",
     title: "The Tribe Lodge — A place where comfort meets culture",
     description:
-      "8 individually styled presidential suites in Hillside, Bulawayo. Superking beds, en-suite bathrooms, air-conditioning. From $60/night. Conference facilities, curated tours & airport transfers.",
+      "8 individually styled presidential suites in Hillside, Bulawayo. Superking beds, en-suite bathrooms, air-conditioning. Conference facilities, curated tours & airport transfers.",
     images: [
       {
         url: OG_IMAGE,
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     creator: "@thetribelodge",
     title: "The Tribe Lodge — A place where comfort meets culture",
     description:
-      "8 presidential suites in Hillside, Bulawayo, Zimbabwe. From $60/night. Book now.",
+      "8 presidential suites in Hillside, Bulawayo, Zimbabwe. Enquire for rates. Book now.",
     images: [OG_IMAGE],
   },
 

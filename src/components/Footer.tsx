@@ -30,7 +30,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sand-200/80 text-sm">
             {[
               ["About", "#about"],
-              ["Rooms & Rates", "#rooms"],
+              ["Rooms", "#rooms"],
               ["Services", "#services"],
               ["Tours & Transfers", "#tours"],
               ["Gallery", "#gallery"],
